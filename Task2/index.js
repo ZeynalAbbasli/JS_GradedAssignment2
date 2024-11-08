@@ -1,5 +1,5 @@
 function setCancellableTimeout(callback, delay, ...params){
-	const timeoutID = setTimeout(callback, delay, params);
+	const timeoutID = setTimeout(callback, delay, ...params);
 	
 	return function cancel() {clearTimeout(timeoutID);};
 }
@@ -9,3 +9,6 @@ const cancel = setCancellableTimeout(() => {
   i++;
 }, 100);
 setTimeout(() => {cancel(); console.log('The last value of i:', i); console.log('Canceled');}, 50);
+
+
+setTimeout(()=> {console.log(i)}, 100);
